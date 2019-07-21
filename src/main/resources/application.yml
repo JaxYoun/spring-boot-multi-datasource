@@ -1,0 +1,57 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: SpringBootMybatisDemo
+  datasource:
+    one:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      jdbc-url: jdbc:mysql://root:mysql@127.0.0.1:3306/yang_dev?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false&useServerPrepStmts=true&cachePrepStmts=true
+      hikari:
+#        username: root
+#        password: mysql
+        minimum-idle: 0
+        maximum-pool-size: 200
+        max-lifetime: 36000
+        connection-timeout: 36000
+        idle-timeout: 1800
+    two:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      jdbc-url: jdbc:mysql://root:mysql@127.0.0.1:3306/yang_test?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false&useServerPrepStmts=true&cachePrepStmts=true
+      hikari:
+#        username: root
+#        password: mysql
+        minimum-idle: 0
+        maximum-pool-size: 200
+        max-lifetime: 36000
+        connection-timeout: 36000
+        idle-timeout: 1800
+
+
+#设置日志级别，由于rootLogger是所有logger的始祖，所以配置了rootLogger的级别，所有的logger自动集成其级别
+logging:
+  level:
+    root: info
+
+#MyBatis文件及实体扫描【此处需特别注意】
+mybatis:
+  type-aliases-package: com.yang.springbootmultidatasource.entity
+#  mapper-locations: 在双数据源场景下该配置无效
+#    - classpath:mapper/one/*.xml
+#    - classpath:mapper/one/*.xml
+#    - classpath:com/yang/springbootmultidatasource/dao/mapper/one/*.xml
+#    - classpath:com/yang/springbootmultidatasource/dao/mapper/two/*.xml
+
+#分页插件配置
+#pagehelper:
+#  helper-dialect: mysql
+#  reasonable: true
+#  support-methods-arguments: true
+#  params: count=countsql
+
+
+
+
